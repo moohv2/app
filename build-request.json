@@ -1,0 +1,90 @@
+{
+  "kind": "build_request",
+  "title": "Add GIF sharing feature to chat",
+  "projectName": "Community Chat",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add support for users to send GIF images in chat by pasting direct .gif URLs (from media.tenor.com, c.tenor.com, or any other direct .gif link)",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-20"
+        ],
+        "quotes": [
+          "Yes add this gif feature to chat"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can paste direct .gif URLs into the chat input",
+        "GIF URLs are detected and rendered as animated images in the message display",
+        "GIFs display inline in chat messages similar to how stickers are displayed",
+        "GIF messages are stored and retrieved with the same persistence as regular messages"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Validate that pasted URLs are direct image links ending in .gif and display appropriate feedback if invalid URLs are provided",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-20"
+        ]
+      },
+      "acceptanceCriteria": [
+        "URLs ending in .gif are accepted and rendered as GIFs",
+        "Non-GIF URLs show an error message or are rejected",
+        "Users receive clear feedback about URL format requirements"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Extend the message content display in ChatMessageItem to render GIF URLs as animated images with proper sizing and layout",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-20"
+        ]
+      },
+      "acceptanceCriteria": [
+        "GIF images display at an appropriate size in the chat flow",
+        "GIFs maintain their animated behavior",
+        "GIF display respects the existing chat message layout and styling",
+        "GIFs are visually distinct from stickers but integrate cohesively with the chat UI"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Update the backend Message type to support storing GIF URLs alongside existing text, image, and sticker content",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-20"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Messages with GIF URLs are persisted to the backend",
+        "GIF messages are retrieved correctly when loading chat history",
+        "The Message type accommodates GIF URLs without breaking existing message types"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify the Internet Identity authentication hooks (frontend/src/hooks/useInternetIdentity.ts)",
+    "Do not modify the UI component library (frontend/src/components/ui)",
+    "Maintain compatibility with existing message types (text, images, stickers, dice rolls)",
+    "Use the existing single-actor backend architecture in backend/main.mo"
+  ],
+  "nonGoals": [
+    "Converting tenor.com/view/ links to direct .gif URLs automatically",
+    "Fetching or resolving GIF URLs from third-party APIs",
+    "GIF upload or hosting functionality",
+    "GIF search or browsing interface",
+    "Support for video formats or other animated formats beyond .gif"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

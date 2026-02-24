@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Community app with custom stickers and GIF sharing feature",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-add-support-for-users-to-send-gif-images-in-chat-by-pasting-direct-gif-urls-from-media-tenor-com-c-tenor-com-or-any-other-direct-gif-link",
+      "title": "Add support for users to send GIF images in chat by pasting direct .gif URLs (from media.tenor.com, c.tenor.com, or any other direct .gif link)",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-validate-that-pasted-urls-are-direct-image-links-ending-in-gif-and-display-appropriate-feedback-if-invalid-urls-are-provided",
+      "title": "Validate that pasted URLs are direct image links ending in .gif and display appropriate feedback if invalid URLs are provided",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-extend-the-message-content-display-in-chatmessageitem-to-render-gif-urls-as-animated-images-with-proper-sizing-and-layout",
+      "title": "Extend the message content display in ChatMessageItem to render GIF URLs as animated images with proper sizing and layout",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add GIF sharing feature to chat (support direct .gif URL embedding)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Update the backend Message type to support storing GIF URLs alongside existing text, image, and sticker content",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Community Chat",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

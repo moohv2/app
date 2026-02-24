@@ -1,0 +1,78 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-18T23:18:54.672Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 3,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Add support for users to send GIF images in chat by pasting direct .gif URLs (from media.tenor.com, c.tenor.com, or any other direct .gif link)",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/chat/ChannelChatView.tsx",
+          "frontend/src/components/chat/ChatMessageItem.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/chat/ChannelChatView.tsx",
+          "frontend/src/components/chat/ChatMessageItem.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Validate that pasted URLs are direct image links ending in .gif and display appropriate feedback if invalid URLs are provided",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/lib/gifUrlValidation.ts",
+          "frontend/src/components/chat/ChannelChatView.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/lib/gifUrlValidation.ts",
+          "frontend/src/components/chat/ChannelChatView.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Extend the message content display in ChatMessageItem to render GIF URLs as animated images with proper sizing and layout",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/chat/ChatMessageItem.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/chat/ChatMessageItem.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Update the backend Message type to support storing GIF URLs alongside existing text, image, and sticker content",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/chat/ChannelChatView.tsx",
+    "frontend/src/components/chat/ChatMessageItem.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/lib/gifUrlValidation.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

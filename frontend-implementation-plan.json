@@ -1,0 +1,67 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add GIF sharing feature to chat",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add support for users to send GIF images in chat by pasting direct .gif URLs",
+      "acceptanceCriteria": [
+        "Users can paste direct .gif URLs into the chat input",
+        "GIF URLs are detected and rendered as animated images in the message display",
+        "GIFs display inline in chat messages similar to how stickers are displayed",
+        "GIF messages are stored and retrieved with the same persistence as regular messages"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/chat/ChannelChatView.tsx",
+          "operation": "modify",
+          "description": "Add GIF URL detection logic to the message input handler. When a user pastes or types a URL ending in .gif (from media.tenor.com, c.tenor.com, or any other direct .gif link), extract and validate the URL. Pass the validated GIF URL to the postMessage backend capability when sending the message. Ensure the GIF URL is sent via the existing gif parameter in postMessage."
+        },
+        {
+          "path": "frontend/src/components/chat/ChatMessageItem.tsx",
+          "operation": "modify",
+          "description": "Add rendering logic for messages containing GIF URLs. Check if message.gif is present and render it as an <img> element with the GIF URL as src. Apply appropriate sizing and layout styles to match the existing sticker display approach but maintain visual distinction. Ensure GIFs animate properly by using the direct URL. Position GIF display inline with other message content types."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Validate that pasted URLs are direct image links ending in .gif and display appropriate feedback",
+      "acceptanceCriteria": [
+        "URLs ending in .gif are accepted and rendered as GIFs",
+        "Non-GIF URLs show an error message or are rejected",
+        "Users receive clear feedback about URL format requirements"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/lib/gifUrlValidation.ts",
+          "operation": "create",
+          "description": "Create a utility function to validate GIF URLs. Check that the URL ends with .gif (case-insensitive). Return validation result with error messages for invalid URLs. Keep validation logic focused on the .gif extension check without attempting to fetch or resolve URLs."
+        },
+        {
+          "path": "frontend/src/components/chat/ChannelChatView.tsx",
+          "operation": "modify",
+          "description": "Import and use the GIF URL validation utility. Display user-friendly error feedback when an invalid URL is detected (e.g., toast notification or inline error message). Clear error state when a valid GIF URL is entered or when the input is cleared."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Extend the message content display in ChatMessageItem to render GIF URLs as animated images with proper sizing and layout",
+      "acceptanceCriteria": [
+        "GIF images display at an appropriate size in the chat flow",
+        "GIFs maintain their animated behavior",
+        "GIF display respects the existing chat message layout and styling",
+        "GIFs are visually distinct from stickers but integrate cohesively with the chat UI"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/chat/ChatMessageItem.tsx",
+          "operation": "modify",
+          "description": "Refine GIF rendering styles and layout within the message item. Apply CSS classes or inline styles to control GIF dimensions (e.g., max-width, max-height) to ensure they fit within the chat bubble without breaking the layout. Ensure GIFs are visually distinguishable from stickers (different size or border styling). Verify that animated GIFs play automatically and loop."
+        }
+      ]
+    }
+  ]
+}
